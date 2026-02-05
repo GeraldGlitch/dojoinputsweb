@@ -107,97 +107,145 @@
         </div>
     </footer>
 
+    <script src="drills-manifest.js"></script>
     <script>
-        const packData = {
+        const packMetadata = {
             keyboard: {
                 label: 'Keyboard',
                 folder: 'comboKeyboard',
                 title: 'Keyboard Drills',
-                description: 'Optimized combos for WASD and Arrow key layouts. Perfect for PC warriors.',
-                files: ['testFile.dojofile']
+                description: 'Optimized combos for WASD and Arrow key layouts. Perfect for PC warriors.'
             },
             xbox360: {
                 label: 'Xbox 360',
                 folder: 'comboXbox360',
                 title: 'Xbox 360 Drills',
-                description: 'Standard layout for Xbox and compatible controllers. Traditional stick and triggers.',
-                files: ['testFile.dojofile']
+                description: 'Standard layout for Xbox and compatible controllers. Traditional stick and triggers.'
             },
             playstation: {
                 label: 'PlayStation',
                 folder: 'comboPlayStation',
                 title: 'PlayStation Drills',
-                description: 'Drills mapped for DualShock and DualSense layouts. Mastering the D-pad.',
-                files: ['testFile.dojofile']
+                description: 'Drills mapped for DualShock and DualSense layouts. Mastering the D-pad.'
             },
             android: {
                 label: 'Android',
                 folder: 'comboAndroid',
                 title: 'Android Drills',
-                description: 'Touch-optimized drills for mobile execution. Master combos on the go.',
-                files: ['testFile.dojofile']
+                description: 'Touch-optimized drills for mobile execution. Master combos on the go.'
             }
         };
 
-        function init() {
+        /**
+         * Forces the browser to download a file by fetching it as a blob.
+         * This prevents browsers from trying to display .dojofiles as text/json.
+         */
+        async function forceDownload(folder, fileName) {
+            const filePath = `${folder}/${fileName}`;
+            try {
+                const response = await fetch(filePath);
+                if (!response.ok) throw new Error('Network response was not ok');
+
+                const blob = await response.blob();
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.style.display = 'none';
+                a.href = url;
+                a.download = fileName;
+                document.body.appendChild(a);
+                a.click();
+                window.URL.revokeObjectURL(url);
+                document.body.removeChild(a);
+            } catch (error) {
+                console.error('Blob download failed, using link fallback:', error);
+                const a = document.createElement('a');
+                a.href = filePath;
+                a.download = fileName;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            }
+        }
+
+        async function init() {
             const urlParams = new URLSearchParams(window.location.search);
             const type = urlParams.get('type') || 'keyboard';
-            const data = packData[type] || packData.keyboard;
+            const metadata = packMetadata[type] || packMetadata.keyboard;
 
-            document.getElementById('typeLabel').innerText = data.label;
-            document.getElementById('title').innerText = data.title;
-            document.getElementById('description').innerText = data.description;
+            document.getElementById('typeLabel').innerText = metadata.label;
+            document.getElementById('title').innerText = metadata.title;
+            document.getElementById('description').innerText = metadata.description;
 
             const listContainer = document.getElementById('fileList');
-            listContainer.innerHTML = '';
 
-            if (data.files && data.files.length > 0) {
-                data.files.forEach(fileName => {
-                    const isAndroid = type === 'android';
-                    const item = document.createElement('div');
-                    item.className = `group flex flex-col sm:flex-row items-start sm:items-center justify-between p-6 bg-dojo-card border border-white/5 rounded-2xl transition-all gap-6 ${isAndroid ? 'opacity-75' : 'hover:border-dojo-neon/30'}`;
-                    item.innerHTML = `
-            <div class="flex items-center gap-6">
-              <div class="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center text-dojo-neon group-hover:bg-dojo-neon group-hover:text-dojo-bg transition-colors shrink-0">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                  <path d="M14 3v4a1 1 0 0 0 1 1h4" />
-                  <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
-                </svg>
-              </div>
-              <div class="overflow-hidden">
-                <h4 class="font-bold text-xl truncate mb-1 whitespace-nowrap">${fileName}</h4>
-                <div class="flex items-center gap-2 text-xs text-dojo-muted tracking-widest uppercase font-bold">
-                  <span class="px-2 py-0.5 rounded bg-white/5 border border-white/10 uppercase">${fileName.split('.').pop()}</span>
-                  <span>${isAndroid ? 'Pending Upload' : 'Ready to use'}</span>
+            try {
+                if (typeof window.DRILLS_MANIFEST === 'undefined') {
+                    throw new Error('DRILLS_MANIFEST not found. Please run "pnpm run update-drills".');
+                }
+
+                const files = window.DRILLS_MANIFEST[type] || [];
+                listContainer.innerHTML = '';
+
+                if (files.length > 0) {
+                    files.forEach(fileName => {
+                        const isAndroid = type === 'android';
+                        const item = document.createElement('div');
+                        item.className = `group flex flex-col sm:flex-row items-start sm:items-center justify-between p-6 bg-dojo-card border border-white/5 rounded-2xl transition-all gap-6 ${isAndroid ? 'opacity-75' : 'hover:border-dojo-neon/30'}`;
+                        item.innerHTML = `
+              <div class="flex items-center gap-6">
+                <div class="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center text-dojo-neon group-hover:bg-dojo-neon group-hover:text-dojo-bg transition-colors shrink-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+                    <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
+                  </svg>
+                </div>
+                <div class="overflow-hidden">
+                  <h4 class="font-bold text-xl truncate mb-1 whitespace-nowrap">${fileName}</h4>
+                  <div class="flex items-center gap-2 text-xs text-dojo-muted tracking-widest uppercase font-bold">
+                    <span class="px-2 py-0.5 rounded bg-white/5 border border-white/10 uppercase">${fileName.split('.').pop()}</span>
+                    <span>${isAndroid ? 'Pending Upload' : 'Ready to use'}</span>
+                  </div>
                 </div>
               </div>
-            </div>
-            ${isAndroid
-                            ? `<button disabled class="w-full sm:w-auto px-8 py-4 bg-white/5 border border-white/10 text-dojo-muted font-black rounded-xl cursor-not-allowed opacity-50">
-                  COMING SOON
-                </button>`
-                            : `<a href="${data.folder}/${fileName}" download class="w-full sm:w-auto px-8 py-4 bg-dojo-neon text-dojo-bg font-black rounded-xl hover:scale-105 transition-transform flex items-center justify-center gap-3 shadow-[0_0_20px_rgba(0,242,255,0.2)]">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
-                    <path d="M7 11l5 5l5 -5" />
-                    <path d="M12 4l0 12" />
-                  </svg>
-                  DOWNLOAD
-                </a>`
-                        }
-          `;
-                    listContainer.appendChild(item);
-                });
-            } else {
+              ${isAndroid
+                                ? `<button disabled class="w-full sm:w-auto px-8 py-4 bg-white/5 border border-white/10 text-dojo-muted font-black rounded-xl cursor-not-allowed opacity-50">
+                    COMING SOON
+                  </button>`
+                                : `<button onclick="forceDownload('${metadata.folder}', '${fileName}')" class="w-full sm:w-auto px-8 py-4 bg-dojo-neon text-dojo-bg font-black rounded-xl hover:scale-105 transition-transform flex items-center justify-center gap-3 shadow-[0_0_20px_rgba(0,242,255,0.2)]">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
+                      <path d="M7 11l5 5l5 -5" />
+                      <path d="M12 4l0 12" />
+                    </svg>
+                    DOWNLOAD
+                  </button>`
+                            }
+            `;
+                        listContainer.appendChild(item);
+                    });
+                } else {
+                    showEmptyState(listContainer);
+                }
+            } catch (err) {
+                console.error('Failed to load DRILLS_MANIFEST:', err);
                 listContainer.innerHTML = `
-          <div class="p-20 text-center text-dojo-muted border border-dashed border-white/10 rounded-[2.5rem]">
-            <p class="text-2xl font-bold mb-4 text-white">No files found</p>
-            <p class="text-lg">Check back later for new updates in this category!</p>
+          <div class="p-12 text-center text-dojo-muted border border-dashed border-red-500/20 rounded-3xl">
+            <p class="text-xl font-bold mb-2 text-white">Update required</p>
+            <p class="text-sm">Please run "pnpm run update-drills" to refresh the local file library.</p>
           </div>
         `;
             }
+        }
+
+        function showEmptyState(container) {
+            container.innerHTML = `
+        <div class="p-20 text-center text-dojo-muted border border-dashed border-white/10 rounded-[2.5rem]">
+          <p class="text-2xl font-bold mb-4 text-white">No files found</p>
+          <p class="text-lg">Check back later for new updates in this category!</p>
+        </div>
+      `;
         }
 
         init();

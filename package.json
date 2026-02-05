@@ -1,0 +1,12 @@
+{
+    "name": "dojo-inputs-web",
+    "version": "1.0.0",
+    "description": "DojoInputs Landing Page and Drill Library",
+    "scripts": {
+        "update-drills": "node scripts/update-drills.js"
+    },
+    "keywords": [],
+    "author": "Gerald Glitch",
+    "license": "ISC",
+    "type": "module"
+}
