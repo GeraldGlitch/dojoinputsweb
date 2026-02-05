@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="es" class="dark">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Combo Packs | DojoInputs</title>
+    <title>Packs de Combos | DojoInputs</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -72,7 +72,7 @@
                     <path d="M5 12l6 6" />
                     <path d="M5 12l6 -6" />
                 </svg>
-                Back home
+                Volver al inicio
             </a>
         </div>
     </nav>
@@ -84,9 +84,9 @@
                     class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-dojo-neon/10 border border-dojo-neon/20 mb-6">
                     <span class="text-xs font-bold text-dojo-neon tracking-wider uppercase" id="typeLabel">PACKS</span>
                 </div>
-                <h1 class="text-4xl md:text-7xl font-display font-extrabold mb-4" id="title">Drill Library</h1>
-                <p class="text-xl text-dojo-muted leading-relaxed" id="description">Explore and download pre-made
-                    execution drills.</p>
+                <h1 class="text-4xl md:text-7xl font-display font-extrabold mb-4" id="title">Biblioteca de Drills</h1>
+                <p class="text-xl text-dojo-muted leading-relaxed" id="description">Explora y descarga drills de
+                    ejecución pre-hechos.</p>
             </header>
 
             <div id="fileList" class="space-y-4">
@@ -95,7 +95,7 @@
                     <div
                         class="w-12 h-12 border-4 border-dojo-neon/20 border-t-dojo-neon rounded-full animate-spin mx-auto mb-4">
                     </div>
-                    Loading drills...
+                    Cargando drills...
                 </div>
             </div>
         </div>
@@ -103,7 +103,7 @@
 
     <footer class="py-12 border-t border-white/5 bg-dojo-card/30">
         <div class="max-w-7xl mx-auto px-6 text-center text-xs text-dojo-muted">
-            <p>&copy; 2024 DojoInputs. All rights reserved.</p>
+            <p>&copy; 2024 DojoInputs. Todos los derechos reservados.</p>
         </div>
     </footer>
 
@@ -111,28 +111,28 @@
     <script>
         const packMetadata = {
             keyboard: {
-                label: 'Keyboard',
+                label: 'Teclado',
                 folder: 'comboKeyboard',
-                title: 'Keyboard Drills',
-                description: 'Optimized combos for WASD and Arrow key layouts. Perfect for PC warriors.'
+                title: 'Drills de Teclado',
+                description: 'Combos optimizados para layouts de WASD y flechas. Perfecto para guerreros de PC.'
             },
             xbox360: {
                 label: 'Xbox 360',
                 folder: 'comboXbox360',
-                title: 'Xbox 360 Drills',
-                description: 'Standard layout for Xbox and compatible controllers. Traditional stick and triggers.'
+                title: 'Drills de Xbox 360',
+                description: 'Layout estándar para Xbox y mandos compatibles. Sticks y gatillos tradicionales.'
             },
             playstation: {
                 label: 'PlayStation',
                 folder: 'comboPlayStation',
-                title: 'PlayStation Drills',
-                description: 'Drills mapped for DualShock and DualSense layouts. Mastering the D-pad.'
+                title: 'Drills de PlayStation',
+                description: 'Drills mapeados para DualShock y DualSense. Dominando el D-pad.'
             },
             android: {
                 label: 'Android',
                 folder: 'comboAndroid',
-                title: 'Android Drills',
-                description: 'Touch-optimized drills for mobile execution. Master combos on the go.'
+                title: 'Drills de Android',
+                description: 'Drills optimizados para pantallas táctiles. Domina combos en cualquier lugar.'
             }
         };
 
@@ -157,7 +157,7 @@
                 window.URL.revokeObjectURL(url);
                 document.body.removeChild(a);
             } catch (error) {
-                console.error('Blob download failed, using link fallback:', error);
+                console.error('La descarga de Blob falló, usando respaldo:', error);
                 const a = document.createElement('a');
                 a.href = filePath;
                 a.download = fileName;
@@ -180,7 +180,7 @@
 
             try {
                 if (typeof window.DRILLS_MANIFEST === 'undefined') {
-                    throw new Error('DRILLS_MANIFEST not found. Please run "pnpm run update-drills".');
+                    throw new Error('DRILLS_MANIFEST no encontrado. Por favor ejecuta "pnpm run update-drills".');
                 }
 
                 const files = window.DRILLS_MANIFEST[type] || [];
@@ -204,13 +204,13 @@
                   <h4 class="font-bold text-xl truncate mb-1 whitespace-nowrap">${fileName}</h4>
                   <div class="flex items-center gap-2 text-xs text-dojo-muted tracking-widest uppercase font-bold">
                     <span class="px-2 py-0.5 rounded bg-white/5 border border-white/10 uppercase">${fileName.split('.').pop()}</span>
-                    <span>${isAndroid ? 'Pending Upload' : 'Ready to use'}</span>
+                    <span>${isAndroid ? 'Pendiente de subir' : 'Listo para usar'}</span>
                   </div>
                 </div>
               </div>
               ${isAndroid
                                 ? `<button disabled class="w-full sm:w-auto px-8 py-4 bg-white/5 border border-white/10 text-dojo-muted font-black rounded-xl cursor-not-allowed opacity-50">
-                    COMING SOON
+                    PRÓXIMAMENTE
                   </button>`
                                 : `<button onclick="forceDownload('${metadata.folder}', '${fileName}')" class="w-full sm:w-auto px-8 py-4 bg-dojo-neon text-dojo-bg font-black rounded-xl hover:scale-105 transition-transform flex items-center justify-center gap-3 shadow-[0_0_20px_rgba(0,242,255,0.2)]">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -219,7 +219,7 @@
                       <path d="M7 11l5 5l5 -5" />
                       <path d="M12 4l0 12" />
                     </svg>
-                    DOWNLOAD
+                    DESCARGAR
                   </button>`
                             }
             `;
@@ -232,8 +232,8 @@
                 console.error('Failed to load DRILLS_MANIFEST:', err);
                 listContainer.innerHTML = `
           <div class="p-12 text-center text-dojo-muted border border-dashed border-red-500/20 rounded-3xl">
-            <p class="text-xl font-bold mb-2 text-white">Update required</p>
-            <p class="text-sm">Please run "pnpm run update-drills" to refresh the local file library.</p>
+            <p class="text-xl font-bold mb-2 text-white">Actualización requerida</p>
+            <p class="text-sm">Por favor ejecuta "pnpm run update-drills" para refrescar la biblioteca de archivos local.</p>
           </div>
         `;
             }
@@ -242,8 +242,8 @@
         function showEmptyState(container) {
             container.innerHTML = `
         <div class="p-20 text-center text-dojo-muted border border-dashed border-white/10 rounded-[2.5rem]">
-          <p class="text-2xl font-bold mb-4 text-white">No files found</p>
-          <p class="text-lg">Check back later for new updates in this category!</p>
+          <p class="text-2xl font-bold mb-4 text-white">No se encontraron archivos</p>
+          <p class="text-lg">¡Vuelve más tarde para nuevas actualizaciones en esta categoría!</p>
         </div>
       `;
         }
