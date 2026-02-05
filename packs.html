@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Combo Packs | DojoInputs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Outfit:wght@700;800&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dojo: {
+                            bg: '#0a0a0c',
+                            card: '#16161e',
+                            neon: '#00f2ff',
+                            accent: '#ff0055',
+                            muted: '#a0a0ab'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0a0a0c;
+            color: #ffffff;
+            scroll-behavior: smooth;
+        }
+
+        .accent-gradient {
+            background: linear-gradient(135deg, #00f2ff 0%, #ff0055 100%);
+        }
+
+        .bg-grid {
+            background-image: radial-gradient(rgba(0, 242, 255, 0.1) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+    </style>
+</head>
+
+<body class="font-sans antialiased bg-dojo-bg selection:bg-dojo-neon selection:text-dojo-bg min-h-screen bg-grid">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-dojo-bg/80 backdrop-blur-md border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 group-hover:rotate-6 transition-transform duration-300">
+                    <img src="images/logoRound.png" alt="DojoInputs Logo" class="w-full h-full object-contain">
+                </div>
+                <span class="text-2xl font-display font-bold tracking-tight">Dojo<span
+                        class="text-dojo-neon">Inputs</span></span>
+            </a>
+            <a href="index.html"
+                class="text-sm font-semibold hover:text-dojo-neon transition-colors flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" stroke-width="2"
+                    stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M5 12l14 0" />
+                    <path d="M5 12l14 0" />
+                    <path d="M5 12l6 6" />
+                    <path d="M5 12l6 -6" />
+                </svg>
+                Back home
+            </a>
+        </div>
+    </nav>
+
+    <main class="pt-32 pb-24">
+        <div class="max-w-4xl mx-auto px-6">
+            <header class="mb-12 text-center md:text-left">
+                <div id="typeBadge"
+                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-dojo-neon/10 border border-dojo-neon/20 mb-6">
+                    <span class="text-xs font-bold text-dojo-neon tracking-wider uppercase" id="typeLabel">PACKS</span>
+                </div>
+                <h1 class="text-4xl md:text-7xl font-display font-extrabold mb-4" id="title">Drill Library</h1>
+                <p class="text-xl text-dojo-muted leading-relaxed" id="description">Explore and download pre-made
+                    execution drills.</p>
+            </header>
+
+            <div id="fileList" class="space-y-4">
+                <!-- Files will be injected here -->
+                <div class="p-12 text-center text-dojo-muted border border-dashed border-white/10 rounded-3xl">
+                    <div
+                        class="w-12 h-12 border-4 border-dojo-neon/20 border-t-dojo-neon rounded-full animate-spin mx-auto mb-4">
+                    </div>
+                    Loading drills...
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-12 border-t border-white/5 bg-dojo-card/30">
+        <div class="max-w-7xl mx-auto px-6 text-center text-xs text-dojo-muted">
+            <p>&copy; 2024 DojoInputs. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const packData = {
+            keyboard: {
+                label: 'Keyboard',
+                folder: 'comboKeyboard',
+                title: 'Keyboard Drills',
+                description: 'Optimized combos for WASD and Arrow key layouts. Perfect for PC warriors.',
+                files: ['testFile.dojofile']
+            },
+            xbox360: {
+                label: 'Xbox 360',
+                folder: 'comboXbox360',
+                title: 'Xbox 360 Drills',
+                description: 'Standard layout for Xbox and compatible controllers. Traditional stick and triggers.',
+                files: ['testFile.dojofile']
+            },
+            playstation: {
+                label: 'PlayStation',
+                folder: 'comboPlayStation',
+                title: 'PlayStation Drills',
+                description: 'Drills mapped for DualShock and DualSense layouts. Mastering the D-pad.',
+                files: ['testFile.dojofile']
+            },
+            android: {
+                label: 'Android',
+                folder: 'comboAndroid',
+                title: 'Android Drills',
+                description: 'Touch-optimized drills for mobile execution. Master combos on the go.',
+                files: ['testFile.dojofile']
+            }
+        };
+
+        function init() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const type = urlParams.get('type') || 'keyboard';
+            const data = packData[type] || packData.keyboard;
+
+            document.getElementById('typeLabel').innerText = data.label;
+            document.getElementById('title').innerText = data.title;
+            document.getElementById('description').innerText = data.description;
+
+            const listContainer = document.getElementById('fileList');
+            listContainer.innerHTML = '';
+
+            if (data.files && data.files.length > 0) {
+                data.files.forEach(fileName => {
+                    const item = document.createElement('div');
+                    item.className = 'group flex flex-col sm:flex-row items-start sm:items-center justify-between p-6 bg-dojo-card border border-white/5 rounded-2xl hover:border-dojo-neon/30 transition-all gap-6';
+                    item.innerHTML = `
+            <div class="flex items-center gap-6">
+              <div class="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center text-dojo-neon group-hover:bg-dojo-neon group-hover:text-dojo-bg transition-colors shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+                  <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
+                </svg>
+              </div>
+              <div class="overflow-hidden">
+                <h4 class="font-bold text-xl truncate mb-1 whitespace-nowrap">${fileName}</h4>
+                <div class="flex items-center gap-2 text-xs text-dojo-muted tracking-widest uppercase font-bold">
+                  <span class="px-2 py-0.5 rounded bg-white/5 border border-white/10 uppercase">${fileName.split('.').pop()}</span>
+                  <span>Ready to use</span>
+                </div>
+              </div>
+            </div>
+            <a href="${data.folder}/${fileName}" download class="w-full sm:w-auto px-8 py-4 bg-dojo-neon text-dojo-bg font-black rounded-xl hover:scale-105 transition-transform flex items-center justify-center gap-3 shadow-[0_0_20px_rgba(0,242,255,0.2)]">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
+                <path d="M7 11l5 5l5 -5" />
+                <path d="M12 4l0 12" />
+              </svg>
+              DOWNLOAD
+            </a>
+          `;
+                    listContainer.appendChild(item);
+                });
+            } else {
+                listContainer.innerHTML = `
+          <div class="p-20 text-center text-dojo-muted border border-dashed border-white/10 rounded-[2.5rem]">
+            <p class="text-2xl font-bold mb-4 text-white">No files found</p>
+            <p class="text-lg">Check back later for new updates in this category!</p>
+          </div>
+        `;
+            }
+        }
+
+        init();
+    </script>
+</body>
+
+</html>
