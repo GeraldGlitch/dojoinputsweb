@@ -1,12 +1,587 @@
 <!DOCTYPE html>
-<html lang="">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <header></header>
-    <main></main>
-    <footer></footer>
-  </body>
+<html lang="en" class="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DojoInputs | Train Real Execution</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Outfit:wght@700;800&display=swap"
+    rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            dojo: {
+              bg: '#0a0a0c',
+              card: '#16161e',
+              neon: '#00f2ff',
+              accent: '#ff0055',
+              muted: '#a0a0ab'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Outfit', 'sans-serif']
+          },
+          animation: {
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #0a0a0c;
+      color: #ffffff;
+      scroll-behavior: smooth;
+    }
+
+    .neon-text {
+      text-shadow: 0 0 10px rgba(0, 242, 255, 0.5), 0 0 20px rgba(0, 242, 255, 0.3);
+    }
+
+    .neon-border {
+      box-shadow: 0 0 15px rgba(0, 242, 255, 0.2);
+      border: 1px solid rgba(0, 242, 255, 0.3);
+    }
+
+    .accent-gradient {
+      background: linear-gradient(135deg, #00f2ff 0%, #ff0055 100%);
+    }
+
+    .bg-grid {
+      background-image: radial-gradient(rgba(0, 242, 255, 0.1) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    .hero-glow {
+      background: radial-gradient(circle at center, rgba(0, 242, 255, 0.15) 0%, transparent 70%);
+    }
+  </style>
+</head>
+
+<body class="font-sans antialiased bg-dojo-bg selection:bg-dojo-neon selection:text-dojo-bg">
+  <!-- Navigation -->
+  <nav class="fixed top-0 w-full z-50 bg-dojo-bg/80 backdrop-blur-md border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <div class="flex items-center gap-3 group cursor-pointer">
+        <div class="w-10 h-10 group-hover:rotate-6 transition-transform duration-300">
+          <img src="images/logoRound.png" alt="DojoInputs Logo" class="w-full h-full object-contain">
+        </div>
+        <span class="text-2xl font-display font-bold tracking-tight">Dojo<span
+            class="text-dojo-neon">Inputs</span></span>
+      </div>
+
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#about" class="text-sm font-semibold hover:text-dojo-neon transition-colors">About</a>
+        <a href="#features" class="text-sm font-semibold hover:text-dojo-neon transition-colors">Features</a>
+        <a href="#packs" class="text-sm font-semibold hover:text-dojo-neon transition-colors">Combo Packs</a>
+        <a href="https://github.com/GeraldGlitch"
+          class="px-5 py-2.5 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full text-sm font-bold transition-all">GitHub</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="relative min-h-[90vh] flex items-center pt-20 overflow-hidden bg-grid">
+      <div class="absolute inset-0 hero-glow"></div>
+      <div class="max-w-7xl mx-auto px-6 relative z-10 w-full">
+        <div class="max-w-3xl">
+          <div
+            class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-dojo-neon/10 border border-dojo-neon/20 mb-8 animate-pulse-slow">
+            <span class="w-2 h-2 rounded-full bg-dojo-neon"></span>
+            <span class="text-xs font-bold text-dojo-neon tracking-wider uppercase">Beta Available Now</span>
+          </div>
+
+          <h1 class="text-6xl md:text-8xl font-display font-extrabold mb-6 leading-tight">
+            Train real <span
+              class="text-transparent bg-clip-text bg-gradient-to-r from-dojo-neon to-dojo-accent italic">execution</span>.
+            <br>Not theory.
+          </h1>
+
+          <p class="text-xl text-dojo-muted mb-12 max-w-xl leading-relaxed">
+            A lightweight tool to record, practice, and master combos for Brawlhalla and other PvP games. Built for real
+            execution training.
+          </p>
+
+          <div class="flex flex-wrap gap-4">
+            <a href="#download"
+              class="px-8 py-4 bg-dojo-neon text-dojo-bg font-display font-black text-lg rounded-xl hover:scale-105 transition-transform shadow-[0_0_20px_rgba(0,242,255,0.4)]">
+              DOWNLOAD APP
+            </a>
+            <a href="#packs"
+              class="px-8 py-4 bg-white/5 border border-white/10 hover:border-dojo-neon/50 text-white font-display font-black text-lg rounded-xl transition-all">
+              COMBO PACKS
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Optional decoration -->
+      <div class="absolute right-[-10%] top-1/2 -translate-y-1/2 hidden lg:block opacity-20">
+        <div class="w-[600px] h-[600px] border-[40px] border-dojo-neon rounded-full blur-[100px]"></div>
+      </div>
+    </section>
+
+    <!-- What is DojoInputs Section -->
+    <section id="about" class="py-24 relative overflow-hidden">
+      <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <div class="flex flex-col md:flex-row items-center gap-16">
+          <div class="flex-1">
+            <h2 class="text-4xl md:text-5xl font-display font-extrabold mb-8 leading-tight">
+              Execution training <span class="text-dojo-neon italic">redefined</span>.
+            </h2>
+            <div class="space-y-6 text-lg text-dojo-muted leading-relaxed">
+              <p>
+                <strong class="text-white">DojoInputs</strong> is a lightweight tool to record, practice, and master
+                combos for Brawlhalla and other PvP games.
+              </p>
+              <p>
+                Most players watch slow-motion videos and try to replicate them. DojoInputs lets you <span
+                  class="text-white font-bold">physically feel the rhythm</span> through real-time feedback and
+                step-by-step practice.
+              </p>
+              <p>
+                Built for real execution training, not just theory.
+              </p>
+            </div>
+          </div>
+          <div class="flex-1 w-full relative">
+            <!-- Actual App Screenshot -->
+            <div
+              class="aspect-video bg-dojo-card rounded-2xl border border-white/10 p-2 shadow-2xl relative group overflow-hidden">
+              <img src="images/Captura de pantalla_20260118_214513.png" alt="DojoInputs App Screenshot"
+                class="w-full h-full object-cover rounded-xl group-hover:scale-105 transition-transform duration-700">
+              <div class="absolute inset-0 bg-gradient-to-t from-dojo-bg/60 to-transparent pointer-events-none"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-24 bg-dojo-card/30">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-display font-extrabold mb-4">Core <span
+              class="text-dojo-neon italic">Capabilities</span></h2>
+          <p class="text-dojo-muted max-w-2xl mx-auto">Everything you need to stop missing that one crucial input.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- Feature 1 -->
+          <div
+            class="p-8 bg-dojo-card border border-white/5 rounded-2xl hover:border-dojo-neon/30 transition-all hover:-translate-y-1">
+            <div class="w-12 h-12 bg-dojo-neon/10 rounded-xl flex items-center justify-center mb-6">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-dojo-neon" viewBox="0 0 24 24"
+                stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M5 12l5 5l10 -10" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Record & Master</h3>
+            <p class="text-dojo-muted text-sm leading-relaxed">
+              Record combos using keyboard or gamepad (Xbox and compatible controllers) with millisecond precision.
+            </p>
+          </div>
+
+          <!-- Feature 2 -->
+          <div
+            class="p-8 bg-dojo-card border border-white/5 rounded-2xl hover:border-dojo-neon/30 transition-all hover:-translate-y-1">
+            <div class="w-12 h-12 bg-dojo-neon/10 rounded-xl flex items-center justify-center mb-6">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-dojo-neon" viewBox="0 0 24 24"
+                stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path
+                  d="M12 21a9 9 0 0 1 0 -18c4.97 0 9 3.582 9 8c0 1.06 -.474 2.078 -1.318 2.828c-.844 .75 -1.989 1.172 -3.182 1.172h-2.5a2 2 0 0 0 -1.5 .5" />
+                <path d="M8.5 10.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                <path d="M12.5 7.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                <path d="M16.5 10.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Visual Feedback</h3>
+            <p class="text-dojo-muted text-sm leading-relaxed">
+              Practice combos step by step with real-time visual feedback. Know exactly where you dropped it.
+            </p>
+          </div>
+
+          <!-- Feature 3 -->
+          <div
+            class="p-8 bg-dojo-card border border-white/5 rounded-2xl hover:border-dojo-neon/30 transition-all hover:-translate-y-1">
+            <div class="w-12 h-12 bg-dojo-neon/10 rounded-xl flex items-center justify-center mb-6">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-dojo-neon" viewBox="0 0 24 24"
+                stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+                <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
+                <path d="M12 11v6" />
+                <path d="M9 14l3 3l3 -3" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Export/Import</h3>
+            <p class="text-dojo-muted text-sm leading-relaxed">
+              Share your tech. Export and import combos using <span class="text-dojo-neon font-mono">.dojofiles</span>
+              files instantly.
+            </p>
+          </div>
+
+          <!-- Feature 4 -->
+          <div
+            class="p-8 bg-dojo-card border border-white/5 rounded-2xl hover:border-dojo-neon/30 transition-all hover:-translate-y-1">
+            <div class="w-12 h-12 bg-dojo-neon/10 rounded-xl flex items-center justify-center mb-6">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-dojo-neon" viewBox="0 0 24 24"
+                stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <circle cx="12" cy="12" r="9" />
+                <path d="M14.8 9a2 2 0 0 0 -1.8 -1h-2a2 2 0 1 0 0 4h2a2 2 0 1 1 0 4h-2a2 2 0 0 1 -1.8 -1" />
+                <path d="M12 7v10" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold mb-3">100% Free</h3>
+            <p class="text-dojo-muted text-sm leading-relaxed">
+              No ads, no subscriptions, no bullshit. Built by players for players. Free forever.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Who is this for Section -->
+    <section class="py-24 border-y border-white/5">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row items-center gap-12">
+          <div class="flex-1 space-y-8">
+            <h2 class="text-4xl font-display font-extrabold leading-tight">Built for those who <span
+                class="text-dojo-accent italic">refuse to plateau</span>.</h2>
+            <ul class="space-y-6">
+              <li class="flex items-start gap-4">
+                <div
+                  class="w-6 h-6 rounded-full bg-dojo-accent/10 border border-dojo-accent/20 flex items-center justify-center shrink-0 mt-1">
+                  <span class="text-[10px] text-dojo-accent">✓</span>
+                </div>
+                <div>
+                  <h4 class="font-bold text-white mb-1">Competitive Players</h4>
+                  <p class="text-dojo-muted text-sm">Players who want to improve execution and consistency in
+                    high-stakes matches.</p>
+                </div>
+              </li>
+              <li class="flex items-start gap-4">
+                <div
+                  class="w-6 h-6 rounded-full bg-dojo-accent/10 border border-dojo-accent/20 flex items-center justify-center shrink-0 mt-1">
+                  <span class="text-[10px] text-dojo-accent">✓</span>
+                </div>
+                <div>
+                  <h4 class="font-bold text-white mb-1">Active Learners</h4>
+                  <p class="text-dojo-muted text-sm">People who learn better by doing and practicing, not just watching
+                    slow videos.</p>
+                </div>
+              </li>
+              <li class="flex items-start gap-4">
+                <div
+                  class="w-6 h-6 rounded-full bg-dojo-accent/10 border border-dojo-accent/20 flex items-center justify-center shrink-0 mt-1">
+                  <span class="text-[10px] text-dojo-accent">✓</span>
+                </div>
+                <div>
+                  <h4 class="font-bold text-white mb-1">Tech Hunters</h4>
+                  <p class="text-dojo-muted text-sm">Players looking to discover and share new strings and hidden game
+                    mechanics.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="flex-1 grid grid-cols-2 gap-4">
+            <div
+              class="aspect-square bg-white/5 rounded-3xl border border-white/10 flex flex-col items-center justify-center p-6 text-center hover:bg-white/10 transition-colors">
+              <span class="text-4xl mb-4">🏆</span>
+              <span class="font-bold">Execution</span>
+            </div>
+            <div
+              class="aspect-square bg-white/5 rounded-3xl border border-white/10 flex flex-col items-center justify-center p-6 text-center mt-8 hover:bg-white/10 transition-colors">
+              <span class="text-4xl mb-4">⚡</span>
+              <span class="font-bold">Rhythm</span>
+            </div>
+            <div
+              class="aspect-square bg-white/5 rounded-3xl border border-white/10 flex flex-col items-center justify-center p-6 text-center -mt-8 hover:bg-white/10 transition-colors">
+              <span class="text-4xl mb-4">🧠</span>
+              <span class="font-bold">Memory</span>
+            </div>
+            <div
+              class="aspect-square bg-white/5 rounded-3xl border border-white/10 flex flex-col items-center justify-center p-6 text-center hover:bg-white/10 transition-colors">
+              <span class="text-4xl mb-4">🥋</span>
+              <span class="font-bold">Dojo</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Combo Packs Section -->
+    <section id="packs" class="py-24 relative">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+          <div>
+            <h2 class="text-4xl md:text-5xl font-display font-extrabold mb-4 italic">Combo <span
+                class="text-dojo-neon not-italic">Packs</span></h2>
+            <p class="text-dojo-muted">Download pre-made execution drills for your favorite games.</p>
+          </div>
+          <div class="flex gap-2">
+            <button
+              class="px-4 py-2 bg-white/5 rounded-lg border border-white/10 text-xs font-bold hover:bg-dojo-neon hover:text-dojo-bg transition-colors">Brawlhalla</button>
+            <button
+              class="px-4 py-2 bg-white/5 rounded-lg border border-white/10 text-xs font-bold opacity-50 cursor-not-allowed">Street
+              Fighter (Soon)</button>
+            <button
+              class="px-4 py-2 bg-white/5 rounded-lg border border-white/10 text-xs font-bold opacity-50 cursor-not-allowed">Tekken
+              (Soon)</button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Pack 1 -->
+          <div
+            class="group bg-dojo-card border border-white/5 rounded-2xl overflow-hidden hover:border-dojo-neon/50 transition-all flex flex-col">
+            <div
+              class="h-32 bg-gradient-to-br from-dojo-neon/20 to-dojo-accent/20 flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
+              <span class="text-4xl">⚔️</span>
+            </div>
+            <div class="p-6 flex-1 flex flex-col">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-[10px] font-bold text-dojo-neon uppercase tracking-widest">Beginner</span>
+                <span class="text-[10px] text-dojo-muted">5 Combos</span>
+              </div>
+              <h3 class="text-xl font-bold mb-2">Brawlhalla Starter</h3>
+              <p class="text-dojo-muted text-sm mb-6 flex-1">Basic strings for every weapon. Perfect for those starting
+                their execution journey.</p>
+              <button onclick="downloadMock('.dojofiles')"
+                class="w-full py-3 bg-white/5 border border-white/10 rounded-xl font-bold text-sm group-hover:bg-dojo-neon group-hover:text-dojo-bg transition-all">
+                Download .dojofiles
+              </button>
+            </div>
+          </div>
+
+          <!-- Pack 2 -->
+          <div
+            class="group bg-dojo-card border border-white/5 rounded-2xl overflow-hidden hover:border-dojo-neon/50 transition-all flex flex-col">
+            <div
+              class="h-32 bg-gradient-to-br from-blue-500/20 to-dojo-neon/20 flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
+              <span class="text-4xl">🏹</span>
+            </div>
+            <div class="p-6 flex-1 flex flex-col">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-[10px] font-bold text-blue-400 uppercase tracking-widest">Intermediate</span>
+                <span class="text-[10px] text-dojo-muted">12 Combos</span>
+              </div>
+              <h3 class="text-xl font-bold mb-2">Weapon Mastery</h3>
+              <p class="text-dojo-muted text-sm mb-6 flex-1">Advanced bread and butter combos for Spear, Bow, and
+                Gauntlets.</p>
+              <button onclick="downloadMock('.dojofiles')"
+                class="w-full py-3 bg-white/5 border border-white/10 rounded-xl font-bold text-sm group-hover:bg-dojo-neon group-hover:text-dojo-bg transition-all">
+                Download .dojofiles
+              </button>
+            </div>
+          </div>
+
+          <!-- Pack 3 -->
+          <div
+            class="group bg-dojo-card border border-white/5 rounded-2xl overflow-hidden hover:border-dojo-neon/50 transition-all flex flex-col">
+            <div
+              class="h-32 bg-gradient-to-br from-dojo-accent/20 to-purple-500/20 flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
+              <span class="text-4xl">🔥</span>
+            </div>
+            <div class="p-6 flex-1 flex flex-col">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-[10px] font-bold text-dojo-accent uppercase tracking-widest">Advanced</span>
+                <span class="text-[10px] text-dojo-muted">8 Combos</span>
+              </div>
+              <h3 class="text-xl font-bold mb-2">Pro String Pack</h3>
+              <p class="text-dojo-muted text-sm mb-6 flex-1">Frame-perfect strings and gravity cancel extensions used by
+                the top players.</p>
+              <button onclick="downloadMock('.dojofiles')"
+                class="w-full py-3 bg-white/5 border border-white/10 rounded-xl font-bold text-sm group-hover:bg-dojo-neon group-hover:text-dojo-bg transition-all">
+                Download .dojofiles
+              </button>
+            </div>
+          </div>
+
+          <!-- Pack 4 -->
+          <div
+            class="group bg-dojo-card border border-white/5 rounded-2xl overflow-hidden hover:border-dojo-neon/50 transition-all flex flex-col">
+            <div
+              class="h-32 bg-gradient-to-br from-yellow-500/20 to-orange-500/20 flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
+              <span class="text-4xl">📦</span>
+            </div>
+            <div class="p-6 flex-1 flex flex-col">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-[10px] font-bold text-yellow-500 uppercase tracking-widest">Giga Pack</span>
+                <span class="text-[10px] text-dojo-muted">40+ Combos</span>
+              </div>
+              <h3 class="text-xl font-bold mb-2">PvP Starter Pack</h3>
+              <p class="text-dojo-muted text-sm mb-6 flex-1">A massive collection covering all major fighting game
+                fundamentals.</p>
+              <button onclick="downloadMock('.dojofiles')"
+                class="w-full py-3 bg-white/5 border border-white/10 rounded-xl font-bold text-sm group-hover:bg-dojo-neon group-hover:text-dojo-bg transition-all">
+                Download .dojofiles
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Philosophy Section -->
+    <section class="py-32 relative overflow-hidden bg-dojo-bg">
+      <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-dojo-neon/50 to-transparent">
+      </div>
+      <div class="max-w-7xl mx-auto px-6 text-center">
+        <h2 class="text-5xl md:text-8xl font-display font-black leading-none mb-4 tracking-tighter">
+          TRAIN. MISS. <span
+            class="text-transparent bg-clip-text bg-gradient-to-r from-dojo-accent to-dojo-neon">REPEAT.</span>
+        </h2>
+        <p class="text-2xl md:text-3xl font-display font-bold text-dojo-muted">
+          Welcome to <span class="text-white">DojoInputs</span>.
+        </p>
+      </div>
+      <div class="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-dojo-accent/50 to-transparent">
+      </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" class="py-24 bg-dojo-bg border-t border-white/5">
+      <div class="max-w-7xl mx-auto px-6 text-center">
+        <h2 class="text-4xl md:text-5xl font-display font-extrabold mb-12">Get <span
+            class="text-dojo-neon italic">DojoInputs</span></h2>
+        <div class="flex justify-center">
+          <div
+            class="p-1 rounded-2xl bg-gradient-to-r from-dojo-neon to-dojo-accent max-w-fit shadow-[0_0_30px_rgba(0,242,255,0.2)]">
+            <div class="bg-dojo-card rounded-xl overflow-hidden">
+              <iframe frameborder="0" src="https://itch.io/embed/4209052" width="552" height="167" class="block"><a
+                  href="https://geraldglitch.itch.io/dojoinputs">DojoInputs by Gerald Glitch</a></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="py-20 border-t border-white/5 bg-dojo-card/50">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+        <div class="md:col-span-2">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-8 h-8">
+              <img src="images/logoRound.png" alt="Logo" class="w-full h-full object-contain">
+            </div>
+            <span class="text-xl font-display font-bold">Dojo<span class="text-dojo-neon">Inputs</span></span>
+          </div>
+          <p class="text-dojo-muted max-w-sm mb-8">
+            Stop watching, start doing. The lightweight tool for serious execution training in Brawlhalla and beyond.
+          </p>
+          <div class="flex gap-4">
+            <a href="https://github.com/GeraldGlitch"
+              class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-dojo-neon hover:text-dojo-bg transition-all">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" stroke-width="2"
+                stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path
+                  d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+              </svg>
+            </a>
+            <a href="https://www.tiktok.com/@geraldglitch" target="_blank"
+              class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-dojo-neon hover:text-dojo-bg transition-all">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" stroke-width="2"
+                stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path
+                  d="M21 7.917v4.034a9.948 9.948 0 0 1 -5 -1.951v4.5a6.5 6.5 0 1 1 -8 -6.326v4.326a2.5 2.5 0 1 0 4 2v-11.5h4.083a6.005 6.005 0 0 0 4.917 4.917" />
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h4 class="font-bold mb-6">Project</h4>
+          <ul class="space-y-4 text-sm text-dojo-muted">
+            <li><a href="#about" class="hover:text-dojo-neon transition-colors">What is DojoInputs</a></li>
+            <li><a href="#features" class="hover:text-dojo-neon transition-colors">Features</a></li>
+            <li><a href="#packs" class="hover:text-dojo-neon transition-colors">Combo Packs</a></li>
+            <li><a href="https://github.com/GeraldGlitch" class="hover:text-dojo-neon transition-colors">Source Code</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold mb-6 italic text-dojo-accent">Support the Dojo</h4>
+          <p class="text-xs text-dojo-muted mb-4">Free forever. Donations welcome, never required.</p>
+          <a href="https://ko-fi.com/geraldglitch" target="_blank"
+            class="block w-full py-3 bg-white/5 border border-white/10 rounded-xl font-bold text-xs hover:border-dojo-accent/50 hover:text-dojo-accent transition-all text-center">
+            ☕ BUY ME A COFFEE
+          </a>
+        </div>
+      </div>
+      <div class="pt-8 border-t border-white/5 text-center text-xs text-dojo-muted">
+        <p>&copy; 2024 DojoInputs. All rights reserved. Not affiliated with Ubisoft or Blue Mammoth Games.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth scroll for anchors
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Mock download logic
+    function downloadMock(ext) {
+      const btn = event.currentTarget;
+      const originalText = btn.innerText;
+
+      btn.disabled = true;
+      btn.innerText = 'PREPARING...';
+      btn.classList.add('opacity-50');
+
+      setTimeout(() => {
+        btn.innerText = 'DOWNLOADING...';
+
+        // Create fake file link
+        const blob = new Blob(['Mock combo pack data'], { type: 'text/plain' });
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.style.display = 'none';
+        a.href = url;
+        a.download = `combo_pack_${Math.floor(Math.random() * 1000)}${ext}`;
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(url);
+
+        setTimeout(() => {
+          btn.innerText = 'SUCCESS!';
+          btn.classList.remove('bg-white/5');
+          btn.classList.add('bg-green-500/20', 'text-green-400', 'border-green-500/50');
+
+          setTimeout(() => {
+            btn.disabled = false;
+            btn.innerText = originalText;
+            btn.classList.remove('opacity-50', 'bg-green-500/20', 'text-green-400', 'border-green-500/50');
+            btn.classList.add('bg-white/5');
+          }, 2000);
+        }, 1000);
+      }, 1500);
+    }
+  </script>
+</body>
+
 </html>
