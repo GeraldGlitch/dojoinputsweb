@@ -1,3 +1,5 @@
 {
-    "msg": 1
+  "devmessage": "1",
+  "title": "This is a dev message",
+  "message": "Bienvenido a DojoInputs"
 }
