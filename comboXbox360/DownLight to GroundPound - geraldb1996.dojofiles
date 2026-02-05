@@ -1,0 +1,45 @@
+{
+	"combo": [
+		{
+			"device": 0,
+			"index": 1,
+			"pressed": true,
+			"timestamp": 1039,
+			"type": "axis",
+			"value": 0.554680705070496
+		},
+		{
+			"device": 0,
+			"index": 2,
+			"pressed": true,
+			"timestamp": 1159,
+			"type": "button",
+			"value": 0.0
+		},
+		{
+			"device": 0,
+			"index": 0,
+			"pressed": true,
+			"timestamp": 1510,
+			"type": "button",
+			"value": 0.0
+		},
+		{
+			"device": 0,
+			"index": 1,
+			"pressed": true,
+			"timestamp": 1540,
+			"type": "axis",
+			"value": 0.585931181907654
+		},
+		{
+			"device": 0,
+			"index": 3,
+			"pressed": true,
+			"timestamp": 1770,
+			"type": "button",
+			"value": 0.0
+		}
+	],
+	"description": ""
+}
