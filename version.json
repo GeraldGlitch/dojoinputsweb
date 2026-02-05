@@ -1,5 +1,5 @@
 {
-  "version": "1",
-  "title": "Una actualización perrona ha salido",
-  "message": "Nueva actualización perrona disponible, descargala y dóname algo de dinero\nNo seas perro"
+  "version": "2",
+  "title": "Nueva actualización disponible",
+  "message": "Se agregó texturas a los botones y la opción para descargar combos en la web\nGet More Combos te lleva a la web oficial y \npuedes descargar .dojofiles desde Combo Packs"
 }
