@@ -1,5 +1,5 @@
 {
-  "version": "2",
+  "version": "3",
   "title": "Nueva actualización disponible",
-  "message": "Se agregó texturas a los botones y la opción para descargar combos en la web\nGet More Combos te lleva a la web oficial y \npuedes descargar .dojofiles desde Combo Packs"
+  "message": "-Corrección de algunos bugs de detección de dispositivos\n-Selector de dispositivos en el modo práctica en caso que tengas varios controles\n-Estoy trabajando en la web para descargar combos\nNo estoy seguro si los .dojofiles de la versión anterior funcionen en esta pero deberían"
 }
