@@ -1,0 +1,37 @@
+{
+	"combo": [
+		{
+			"device": 0,
+			"index": 0,
+			"pressed": true,
+			"timestamp": 0,
+			"type": "axis",
+			"value": 1.0
+		},
+		{
+			"device": 0,
+			"index": 2,
+			"pressed": true,
+			"timestamp": 100,
+			"type": "button",
+			"value": 0.0
+		},
+		{
+			"device": 0,
+			"index": 1,
+			"pressed": true,
+			"timestamp": 200,
+			"type": "axis",
+			"value": 1.0
+		},
+		{
+			"device": 0,
+			"index": 2,
+			"pressed": true,
+			"timestamp": 300,
+			"type": "button",
+			"value": 0.0
+		}
+	],
+	"description": "From left"
+}
