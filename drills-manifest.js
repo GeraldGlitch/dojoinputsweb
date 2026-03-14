@@ -7,6 +7,7 @@ window.DRILLS_MANIFEST = {
     "(S)Light + (S)Air - Hacha.dojofiles",
     "(S)Ligth + (N)Air - Hacha.dojofiles",
     "4Hit GreatSword combo.dojofiles",
+    "Cannon 0 to Death - Commando.dojofiles",
     "DownLight to GroundPound.dojofiles",
     "Gravity Cancel DownLight to Recovery.dojofiles",
     "Throw Ax to NSig Imugi.dojofiles"

@@ -1,0 +1,133 @@
+{
+	"combo": [
+		{
+			"device": 0,
+			"index": 2,
+			"pressed": true,
+			"timestamp": 0,
+			"type": "button",
+			"value": 0.0
+		},
+		{
+			"device": 0,
+			"index": 0,
+			"pressed": true,
+			"timestamp": 100,
+			"type": "axis",
+			"value": -1.0
+		},
+		{
+			"device": 0,
+			"index": 5,
+			"pressed": true,
+			"timestamp": 200,
+			"type": "axis",
+			"value": 1.0
+		},
+		{
+			"device": 0,
+			"index": 0,
+			"pressed": true,
+			"timestamp": 300,
+			"type": "axis",
+			"value": 1.0
+		},
+		{
+			"device": 0,
+			"index": 2,
+			"pressed": true,
+			"timestamp": 400,
+			"type": "button",
+			"value": 0.0
+		},
+		{
+			"device": 0,
+			"index": 0,
+			"pressed": true,
+			"timestamp": 500,
+			"type": "axis",
+			"value": 1.0
+		},
+		{
+			"device": 0,
+			"index": 2,
+			"pressed": true,
+			"timestamp": 600,
+			"type": "button",
+			"value": 0.0
+		},
+		{
+			"device": 0,
+			"index": 0,
+			"pressed": true,
+			"timestamp": 700,
+			"type": "button",
+			"value": 0.0
+		},
+		{
+			"device": 0,
+			"index": 0,
+			"pressed": true,
+			"timestamp": 800,
+			"type": "axis",
+			"value": 1.0
+		},
+		{
+			"device": 0,
+			"index": 2,
+			"pressed": true,
+			"timestamp": 900,
+			"type": "button",
+			"value": 0.0
+		},
+		{
+			"device": 0,
+			"index": 5,
+			"pressed": true,
+			"timestamp": 1000,
+			"type": "axis",
+			"value": 1.0
+		},
+		{
+			"device": 0,
+			"index": 0,
+			"pressed": true,
+			"timestamp": 1100,
+			"type": "axis",
+			"value": 1.0
+		},
+		{
+			"device": 0,
+			"index": 2,
+			"pressed": true,
+			"timestamp": 1200,
+			"type": "button",
+			"value": 0.0
+		},
+		{
+			"device": 0,
+			"index": 0,
+			"pressed": true,
+			"timestamp": 1300,
+			"type": "button",
+			"value": 0.0
+		},
+		{
+			"device": 0,
+			"index": 0,
+			"pressed": true,
+			"timestamp": 1400,
+			"type": "axis",
+			"value": 1.0
+		},
+		{
+			"device": 0,
+			"index": 2,
+			"pressed": true,
+			"timestamp": 1500,
+			"type": "button",
+			"value": 0.0
+		}
+	],
+	"description": "From left side"
+}
