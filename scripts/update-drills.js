@@ -41,6 +41,17 @@ async function updateManifest() {
     const imagesDir = path.join(projectRoot, 'dojohub', 'images');
     let htmlGridContent = '';
 
+    // Load links if exist
+    let links = {};
+    const linksPath = path.join(projectRoot, 'drills-links.json');
+    if (fs.existsSync(linksPath)) {
+        try {
+            links = JSON.parse(fs.readFileSync(linksPath, 'utf8'));
+        } catch (e) {
+            console.warn('[ADVERTENCIA] Error al leer drills-links.json');
+        }
+    }
+
     for (const [key, config] of Object.entries(PACKS_CONFIG)) {
         const folderPath = path.join(projectRoot, config.folder);
 
@@ -64,9 +75,15 @@ async function updateManifest() {
                 const imgSrc = findImage(imagesDir, baseName);
                 console.log(`  ${file} -> ${imgSrc}`);
 
+                const videoId = links[baseName] || '';
+                const videoBtn = videoId ? `<button class="btn-video" data-video="${videoId}">🎬 Ver Video</button>` : '';
+
                 htmlGridContent += `
-      <div class="card">
-        <img src="${imgSrc}" alt="${baseName}">
+      <div class="card" ${videoId ? `data-video="${videoId}"` : ''}>
+        <div class="card-media">
+          <img src="${imgSrc}" alt="${baseName}">
+          ${videoBtn}
+        </div>
         <p><a href="../${config.folder}/${file}" download>${file}</a></p>
       </div>`;
             });
