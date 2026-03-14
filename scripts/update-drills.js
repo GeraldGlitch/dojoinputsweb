@@ -66,7 +66,7 @@ async function updateManifest() {
 
                 htmlGridContent += `
       <div class="card">
-        <img src="${imgSrc}">
+        <img src="${imgSrc}" alt="${baseName}">
         <p><a href="../${config.folder}/${file}" download>${file}</a></p>
       </div>`;
             });
@@ -90,13 +90,13 @@ async function updateManifest() {
     }
 
     let htmlContent = fs.readFileSync(dojoHubPath, 'utf-8');
-    // Replace everything between <div class="grid"> and </main>
-    const gridRegex = /(<div class="grid">)[\s\S]*?(<\/main>)/;
+    // Replace everything between <div class="grid" id="combo-grid"> and the container's closing tag
+    const gridRegex = /(<div class="grid" id="combo-grid">)[\s\S]*?(<\/div>\s*<\/main>)/;
 
     if (gridRegex.test(htmlContent)) {
         const updated = htmlContent.replace(
             gridRegex,
-            `$1\n${htmlGridContent}\n    </div>\n  $2`
+            `$1\n${htmlGridContent}\n    </div>\n    <div id="pagination" class="pagination"></div>\n    $2`
         );
         fs.writeFileSync(dojoHubPath, updated, 'utf-8');
         console.log('[OK] dojohub.html actualizado.');

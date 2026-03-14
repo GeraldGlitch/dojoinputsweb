@@ -11,101 +11,268 @@ body {
 }
 
 /* TOP BAR */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
 .topbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 15px 30px;
     background: #1a1a1a;
 }
 
+.topbar .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    gap: 16px;
+}
+
+.topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.hamburger {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 22px;
+    cursor: pointer;
+    padding: 4px 6px;
+}
+
 .logo {
-    font-size: 26px;
+    font-size: 22px;
     font-weight: bold;
+    white-space: nowrap;
 }
 
 .logo .hub {
     background: orange;
     color: black;
-    padding: 4px 10px;
-    border-radius: 15px;
-    margin-left: 6px;
+    padding: 2px 8px;
+    border-radius: 6px;
+    margin-left: 2px;
+    font-size: 18px;
 }
 
+/* SEARCH */
 .search {
     display: flex;
+    align-items: center;
     background: #2b2b2b;
-    border-radius: 25px;
+    border-radius: 4px;
     overflow: hidden;
+    flex: 1;
+    max-width: 480px;
+}
+
+.search-icon {
+    padding: 0 10px;
+    font-size: 14px;
+    opacity: 0.6;
+    flex-shrink: 0;
 }
 
 .search input {
     background: transparent;
     border: none;
-    padding: 10px 15px;
+    padding: 8px 10px 8px 0;
     color: white;
     outline: none;
-    width: 260px;
+    width: 100%;
+    font-size: 14px;
 }
 
-.search button {
-    background: orange;
+.search input::placeholder {
+    color: #888;
+}
+
+/* USER ICON */
+.topbar-right {
+    flex-shrink: 0;
+}
+
+.user-icon {
+    background: none;
     border: none;
-    padding: 0 15px;
+    color: #fff;
+    font-size: 20px;
     cursor: pointer;
+    padding: 4px 6px;
 }
 
 /* MENU */
 .menu {
+    background: #1a1a1a;
+    border-top: 1px solid #2a2a2a;
+}
+
+.menu .container {
     display: flex;
-    gap: 30px;
-    padding: 12px 30px;
-    background: #111;
+    gap: 24px;
+    padding: 0 20px;
 }
 
 .menu a {
     text-decoration: none;
-    color: #fff;
+    color: #aaa;
     font-weight: 500;
+    font-size: 14px;
+    padding: 10px 0;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
 }
 
 .menu a:hover {
-    color: orange;
+    color: #fff;
+}
+
+.menu a.active {
+    color: #fff;
+    border-bottom-color: #fff;
 }
 
 /* CONTENT */
 .content {
-    padding: 30px;
+    background: #000;
+}
+
+.content .container {
+    padding: 30px 20px;
 }
 
 .content h2 {
     margin-bottom: 20px;
 }
 
-/* GRID */
+/* GRID — 3 columns */
 .grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    gap: 24px;
 }
 
+/* CARDS */
 .card {
     text-align: center;
 }
 
 .card img {
     width: 100%;
-    height: 90%;
+    aspect-ratio: 16 / 10;
     object-fit: cover;
     background: #333;
+    border-radius: 8px;
 }
 
 .card p {
-    margin-top: 10px;
-    font-weight: bold;
+    margin-top: 8px;
+    font-size: 13px;
+    font-weight: 500;
 }
 
 .card p a {
-    color: #ffa500;
+    color: #ddd;
     text-decoration: none;
+    transition: color 0.2s;
+}
+
+.card p a:hover {
+    color: #ffa500;
+}
+
+/* PAGINATION */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 36px;
+    margin-bottom: 20px;
+}
+
+.pagination button {
+    background: #1a1a1a;
+    color: #fff;
+    border: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+
+.pagination button:hover:not(.active):not(:disabled) {
+    background: #2a2a2a;
+}
+
+.pagination button:disabled {
+    opacity: 0.35;
+    cursor: default;
+}
+
+.pagination button.active {
+    background: #333;
+    color: #fff;
+    border: 1px solid #444;
+}
+
+.pagination button.prev {
+    width: 64px;
+    font-size: 22px;
+}
+
+.pagination button.next {
+    background: #ffa500;
+    color: #000;
+    width: 64px;
+    font-size: 22px;
+}
+
+.pagination button.next:hover:not(:disabled) {
+    background: #e69500;
+}
+
+.pagination button.next:disabled {
+    opacity: 0.5;
+}
+
+.pagination .dots {
+    color: #666;
+    padding: 0 2px;
+    font-size: 18px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 500px) {
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .content {
+        padding: 20px 16px;
+    }
+
+    .menu {
+        gap: 16px;
+        padding: 0 16px;
+        overflow-x: auto;
+    }
 }
