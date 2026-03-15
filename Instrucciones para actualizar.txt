@@ -1,0 +1,5 @@
+actualizar combos:
+- pnpm update-drills
+
+Combos con video:
+- agregar el identificador de youtube en drills-links.json (usando mismo nombre para asociar)
