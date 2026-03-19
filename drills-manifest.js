@@ -6,6 +6,7 @@ window.DRILLS_MANIFEST = {
     "(S)Light + (D)Light - Hacha.dojofiles",
     "(S)Light + (S)Air - Hacha.dojofiles",
     "(S)Ligth + (N)Air - Hacha.dojofiles",
+    "17 Hit ProPlayer Combo - On Gaming.dojofiles",
     "4Hit GreatSword combo.dojofiles",
     "Cannon 0 to Death - Commando.dojofiles",
     "DownLight to GroundPound.dojofiles",
