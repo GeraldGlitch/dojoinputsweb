@@ -1,0 +1,29 @@
+{
+	"combo": [
+		{
+			"device_type": "xbox_gamepad",
+			"index": 0,
+			"pressed": true,
+			"timestamp": 810,
+			"type": "axis",
+			"value": 0.5703364610672
+		},
+		{
+			"device_type": "xbox_gamepad",
+			"index": 2,
+			"pressed": true,
+			"timestamp": 2010,
+			"type": "button",
+			"value": 0.0
+		},
+		{
+			"device_type": "xbox_gamepad",
+			"index": 3,
+			"pressed": true,
+			"timestamp": 5980,
+			"type": "button",
+			"value": 0.0
+		}
+	],
+	"description": "from left"
+}

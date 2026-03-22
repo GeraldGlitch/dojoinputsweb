@@ -11,7 +11,8 @@ window.DRILLS_MANIFEST = {
     "Cannon 0 to Death - Commando.dojofiles",
     "DownLight to GroundPound.dojofiles",
     "Gravity Cancel DownLight to Recovery.dojofiles",
-    "Throw Ax to NSig Imugi.dojofiles"
+    "Throw Ax to NSig Imugi.dojofiles",
+    "Xull true combo Dlight + Nsig.dojofiles"
   ],
   "playstation": [],
   "android": []
