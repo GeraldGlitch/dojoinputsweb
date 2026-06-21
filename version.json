@@ -1,5 +1,5 @@
 {
-  "version": "3",
-  "title": "Nueva actualización disponible",
-  "message": "-Corrección de algunos bugs de detección de dispositivos\n-Selector de dispositivos en el modo práctica en caso que tengas varios controles\n-Estoy trabajando en la web para descargar combos\nNo estoy seguro si los .dojofiles de la versión anterior funcionen en esta pero deberían"
+  "version": "4",
+  "title": "Nueva actualización disponible - v1.3",
+  "message": "-Mejora en la experiencia UI\n-Feedback con sonido en tiempo real\n-Recolección de estadísticas\n-Ahora tienes más opciones en la pantalla de configuración"
 }
